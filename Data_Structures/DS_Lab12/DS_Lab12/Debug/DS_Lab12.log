@@ -1,0 +1,17 @@
+﻿  DS_Lab12.cpp
+C:\Dev\DS_Lab12\DS_Lab12\heap.template(38,22): warning C4018: '<': signed/unsigned mismatch
+C:\Dev\DS_Lab12\DS_Lab12\heap.template(31): message : while compiling class template member function 'void heap<T>::insert(const T &)'
+C:\Dev\DS_Lab12\DS_Lab12\heap.template(31): message :         with
+C:\Dev\DS_Lab12\DS_Lab12\heap.template(31): message :         [
+C:\Dev\DS_Lab12\DS_Lab12\heap.template(31): message :             T=int
+C:\Dev\DS_Lab12\DS_Lab12\heap.template(31): message :         ]
+C:\Dev\DS_Lab12\DS_Lab12\priority_queue.template(24): message : see reference to function template instantiation 'void heap<T>::insert(const T &)' being compiled
+C:\Dev\DS_Lab12\DS_Lab12\priority_queue.template(24): message :         with
+C:\Dev\DS_Lab12\DS_Lab12\priority_queue.template(24): message :         [
+C:\Dev\DS_Lab12\DS_Lab12\priority_queue.template(24): message :             T=int
+C:\Dev\DS_Lab12\DS_Lab12\priority_queue.template(24): message :         ]
+C:\Dev\DS_Lab12\DS_Lab12\priority_queue.template(10): message : while compiling class template member function 'priority_queue<int>::priority_queue(void)'
+C:\Dev\DS_Lab12\DS_Lab12\DS_Lab12.cpp(11): message : see reference to function template instantiation 'priority_queue<int>::priority_queue(void)' being compiled
+C:\Dev\DS_Lab12\DS_Lab12\DS_Lab12.cpp(11): message : see reference to class template instantiation 'priority_queue<int>' being compiled
+C:\Dev\DS_Lab12\DS_Lab12\priority_queue.template(45): warning C4715: 'priority_queue<int>::top': not all control paths return a value
+  DS_Lab12.vcxproj -> C:\Dev\DS_Lab12\Debug\DS_Lab12.exe

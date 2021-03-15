@@ -1,0 +1,85 @@
+#include <iostream> 
+#include <cassert>   
+#include <cstdlib>
+#include <vector>
+#include <iterator>
+
+using namespace std;
+
+
+	template <typename T>
+    heap<T>::heap() {
+		 std::vector<T> v;
+	}
+    // postcondition: empty heap has been created
+	
+	template <typename T>
+    unsigned int heap<T>::size() const {
+		return v.size();
+    // postcondition: number of elements in a heap has been returned
+	}
+	
+	template <typename T>
+    bool heap<T>::is_empty() const {
+		if (v.size() == 0) 
+			return true;
+		else return false;
+	}
+    // postcondtion: returned whether the heap is empty
+	
+	template <typename T>
+    void heap<T>::insert (const T& item) {
+		auto ptr = v.begin();
+		if(!is_empty()) {
+			if (v.at(0) < item) {
+				v.emplace(v.begin(), item);
+				return;
+			}
+			for (int i = 0; i < v.size(); i++) {
+				if (v.at(i) < item) {
+					ptr = v.begin();
+					advance(ptr, i);
+					v.insert(ptr, item);
+					return;
+				}
+				advance(ptr, i);
+			}
+		}
+		v.push_back(item);
+	}	
+		
+    // postcondition: item has been added
+	
+	template <typename T>
+    void heap<T>::remove() {
+		if (v.size() != 0) {
+			v.erase(v.begin());
+		}	
+	}
+    // precondition: heap is not empty
+    // postcondition: largest item has been removed from the heap
+	
+	template <typename T>
+    T heap<T>::max() const {
+		return v.front();
+	}	
+    // precondition: heap is not empty
+    // postcondition: copy of largest element in the heap has been returned
+	
+	template <typename T>
+    T& heap<T>::max() {
+		return v.front();
+	}	
+    // precondition: heap is not empty
+    // postcondition: access to largest element in the heap has been returned
+  
+	template <typename T>
+    unsigned int heap<T>::max_child (unsigned int index) const {
+		if (index < v.size()-1) {
+			return v.at(index+1);
+		}
+	}
+    // precondition: element at index has children
+    // postcondition: index of the larger child has been returned
+    //                if there is only 1 child - index of that child has been returned
+

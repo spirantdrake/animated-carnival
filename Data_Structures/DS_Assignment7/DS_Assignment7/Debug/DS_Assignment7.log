@@ -1,0 +1,6 @@
+﻿  DS_Assignment7.cpp
+C:\Dev\DS_Assignment7\DS_Assignment7\DS_Assignment7.cpp(38,17): warning C4018: '<': signed/unsigned mismatch
+C:\Dev\DS_Assignment7\DS_Assignment7\DS_Assignment7.cpp(42,17): warning C4018: '<': signed/unsigned mismatch
+C:\Dev\DS_Assignment7\DS_Assignment7\DS_Assignment7.cpp(52,17): warning C4018: '<': signed/unsigned mismatch
+C:\Dev\DS_Assignment7\DS_Assignment7\DS_Assignment7.cpp(56,17): warning C4018: '<': signed/unsigned mismatch
+  DS_Assignment7.vcxproj -> C:\Dev\DS_Assignment7\Debug\DS_Assignment7.exe

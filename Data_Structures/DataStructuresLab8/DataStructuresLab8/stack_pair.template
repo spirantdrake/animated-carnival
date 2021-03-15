@@ -1,0 +1,105 @@
+#pragma once
+
+#include <cassert>
+#include <iostream>
+
+using namespace std;
+
+template <class T>
+stack_pair<T>::stack_pair()
+{
+	top_a = 0;
+	top_b = CAPACITY - 1;
+}
+
+template <class T>
+T stack_pair<T>::pop_a()
+{
+	assert(!is_empty_a());
+	top_a--;
+	return dataArray[top_a];
+}
+
+template <class T>
+T stack_pair<T>::pop_b()
+{
+	assert(!is_empty_b());
+	top_b++;
+	return dataArray[top_b];
+}
+
+template <class T>
+void stack_pair<T>::push_a(T item)
+{
+	assert(!is_full_a());
+	dataArray[top_a] = item;
+	top_a++;
+}
+
+template <class T>
+void stack_pair<T>::push_b(T item)
+{
+	assert(!is_full_b());
+	dataArray[top_b] = item;
+	top_b--;
+}
+
+template <class T>
+size_t stack_pair<T>::size_a()
+{
+	return top_a;
+}
+
+template <class T>
+size_t stack_pair<T>::size_b()
+{
+	return (CAPACITY - 1) - top_b;
+}
+
+template <class T>
+bool stack_pair<T>::is_empty_a() const
+{
+	if(top_a == 0)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+template <class T>
+bool stack_pair<T>::is_empty_b() const
+{
+	if(top_b == CAPACITY - 1)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+template <class T>
+bool stack_pair<T>::is_full_a() const
+{
+	if(top_a > top_b)
+	{
+		return true;
+	}
+	return false;
+}
+
+template <class T>
+bool stack_pair<T>::is_full_b() const
+{
+	if(top_a > top_b)
+	{
+		return true;
+	}
+	return false;
+}
+
+

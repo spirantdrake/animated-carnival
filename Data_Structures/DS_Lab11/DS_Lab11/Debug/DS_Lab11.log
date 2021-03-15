@@ -1,0 +1,3 @@
+﻿  DS_Lab11.cpp
+C:\Dev\DS_Lab11\DS_Lab11\bst.template(53): warning C4715: 'binary_search_tree<int>::insert': not all control paths return a value
+  DS_Lab11.vcxproj -> C:\Dev\DS_Lab11\Debug\DS_Lab11.exe

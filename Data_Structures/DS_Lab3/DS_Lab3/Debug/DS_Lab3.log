@@ -1,0 +1,12 @@
+﻿  DS_Lab3.cpp
+  set.cpp
+C:\Dev\DS_Lab3\DS_Lab3\set.cpp(21,20): warning C4018: '<': signed/unsigned mismatch
+C:\Dev\DS_Lab3\DS_Lab3\set.cpp(25,22): warning C4018: '<': signed/unsigned mismatch
+C:\Dev\DS_Lab3\DS_Lab3\set.cpp(39,21): warning C4244: 'initializing': conversion from 'double' to 'set::size_type', possible loss of data
+C:\Dev\DS_Lab3\DS_Lab3\set.cpp(63,20): warning C4018: '<': signed/unsigned mismatch
+C:\Dev\DS_Lab3\DS_Lab3\set.cpp(70,20): warning C4018: '<': signed/unsigned mismatch
+C:\Dev\DS_Lab3\DS_Lab3\set.cpp(76,23): warning C4244: 'initializing': conversion from 'double' to 'set::size_type', possible loss of data
+C:\Dev\DS_Lab3\DS_Lab3\set.cpp(91,20): warning C4018: '<': signed/unsigned mismatch
+C:\Dev\DS_Lab3\DS_Lab3\set.cpp(101,21): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
+  DS_Lab3.vcxproj -> C:\Dev\DS_Lab3\Debug\DS_Lab3.exe
