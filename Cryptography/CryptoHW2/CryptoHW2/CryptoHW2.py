@@ -37,10 +37,18 @@ def key(k):
     for x in range(5):
         for y in range(5):
             if (count < len(k)):
-                matrix[x].extend([alphabet[k[count]]])
+                if not any(alphabet[k[count]] in z for z in matrix):
+                    matrix[x].extend([alphabet[k[count]]])
+                else:
+                    y -= 1
+                    
             else:
-                matrix[x].extend([number])
-                number+=1
+                if not any(number in z for z in matrix):
+                    matrix[x].extend([number])
+                    number += 1
+                else:
+                    y -= 1
+                    number += 1
             count += 1
 
     print(matrix)
