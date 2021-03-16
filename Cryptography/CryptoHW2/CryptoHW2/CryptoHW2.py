@@ -14,16 +14,32 @@ def key(k):
 
     #creates a matrix using the list slices
     KM = [temp[y:y+5] for y in range(0, 25, 5)]
-    print(KM)
+    #print(KM)
+    return(KM)
 
 
 def Pre(P):
-    print("Hello World!")
+    #P.split()
+    PL = []
+    y = 0 
+    z = 1
+    for x in range(len(P)):
+        if(y == 0):
+            PL.append(P[y])
+        elif(P[y] != P[y-1]):
+            PL.append(P[y])
+        else:
+            PL.append("x")
+            x -= 1
+        y += 1
+    print(PL)
 
 
 def __main__():
-    k = input("Enter the key for your Playfair cipher: \n")
-    key(k.lower())
+    #k = input("Enter the key for your Playfair cipher: \n")
+    #key(k.lower())
+    P = input("Enter your plaingtext you wish to encode: \n")
+    Pre(P.lower())
 
 
 __main__()
