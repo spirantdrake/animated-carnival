@@ -61,17 +61,55 @@ def index(KM, value):
 
     return (index_x, index_y)
 
+#Takes in PL and splits the two characters into separate ones and returns it
+def string_split(PL, value, placement):
+    word = PL[value]
+    a = word[placement]
+    return (a)
+
 
 def Enc(KM, PL):
-    location = index(KM, 'o')
-    
-    print(f"The index of the value is [{location}].")
+    CT = ""
+    index1_x = 0
+    index1_y = 0
+    index2_x = 0
+    index2_y = 0
+    print(f"KM = {KM}")
+    print(f"PL = {PL}")
 
+    for x in range(len(PL)):
+        first = string_split(PL, x, 0)
+        second = string_split(PL, x, 1)
+        location1 = index(KM, first)
+        location2 = index(KM, second)
+        if (location1[1] == location2[1]):
+            if (location1[0] == 5):
+                index1_x = 0
+            elif (location2[0] == 5):
+                index1_x = 0
+            else:
+                index1_x = location1[0] + 1
+                index2_x = location2[0] + 1
+            index1_y = location1[1]
+            index2_y = location2[1]
+        elif (location1[0] == location2[0]):
+            index1_y = location1[1]
+            index2_y = location2[1]
+            if (location1[0] == 5 or location2[0] == 5):
+                index1_x = 0
+                index2_x = 0
+            else:
+                index1_x = location1[0] + 1
+                index2_x = location1[0] + 1
 
+        CT += str(KM[index1_x][index1_y]) + str(KM[index2_x][index2_y])
+    print(CT)
+
+        
 def __main__():
     k = input("Enter the key for your Playfair cipher: \n")
     KM =key(k.lower())
-    P = input("Enter your plaingtext you wish to encode: \n")
+    P = input("Enter your plaintext you wish to encode: \n")
     PL = Pre(P.lower())
     Enc(KM, PL)
 
