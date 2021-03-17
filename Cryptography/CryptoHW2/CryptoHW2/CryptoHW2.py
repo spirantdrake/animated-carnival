@@ -14,8 +14,8 @@ def key(k):
 
     #creates a matrix using the list slices
     KM = [temp[y:y+5] for y in range(0, 25, 5)]
-    print(KM)
-    #return(KM)
+    #print(KM)
+    return(KM)
 
 
 def Pre(P):
@@ -43,15 +43,36 @@ def Pre(P):
     #edge case rule for catching even numbered plaintext that contain repititive letters
     if (len(P)%2 == 0 and repitition == True):
         PL.append(P[y] + "x")
-    print(PL)
-    #return(PL)
+    #print(PL)
+    return(PL)
+
+
+#This function finds the index of a value in a multidimensional list KM
+def index(KM, value):
+    index_x = 0
+    index_y = 0
+
+    for x in range(5):
+        for y in range(5):
+            if (KM[x][y] == value):
+                index_x = x
+                index_y = y
+                break
+
+    return (index_x, index_y)
+
+
+def Enc(KM, PL):
+    location = index(KM, 'o')
+    
+    print(f"The index of the value is [{location}].")
 
 
 def __main__():
     k = input("Enter the key for your Playfair cipher: \n")
-    key(k.lower())
+    KM =key(k.lower())
     P = input("Enter your plaingtext you wish to encode: \n")
-    Pre(P.lower())
-
+    PL = Pre(P.lower())
+    Enc(KM, PL)
 
 __main__()
