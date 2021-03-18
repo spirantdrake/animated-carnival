@@ -77,8 +77,8 @@ def Enc(KM, PL):
     index1_y = 0
     index2_x = 0
     index2_y = 0
-    #print(f"KM = {KM}")
-    #print(f"PL = {PL}")
+    print(f"KM = {KM}")
+    print(f"PL = {PL}")
 
     #loop to iterate through values of PL
     for x in range(len(PL)):
@@ -89,25 +89,28 @@ def Enc(KM, PL):
         location1 = index(KM, first)
         location2 = index(KM, second)
         #through control flow and logical operators, the loop then encrypts the characters following the method of Playfair cipher encryption.
-        if (location1[1] == location2[1]):
+        if (location1[0] == location2[0]):
             if (location1[0] == 5):
                 index1_x = 0
             elif (location2[0] == 5):
-                index1_x = 0
+                index2_x = 0
             else:
                 index1_x = location1[0] + 1
                 index2_x = location2[0] + 1
             index1_y = location1[1]
             index2_y = location2[1]
-        elif (location1[0] == location2[0]):
-            index1_y = location1[1]
-            index2_y = location2[1]
-            if (location1[0] == 5 or location2[0] == 5):
-                index1_x = 0
-                index2_x = 0
+            #case for when they are in the same column side by side
+        elif (location1[1] == location2[1]):
+            index1_x = location1[0]
+            index2_x = location2[0]
+            if (location1[1] == 5 or location2[1] == 5):
+                index1_y = 0
+                index2_y = 0
             else:
-                index1_x = location1[0] + 1
-                index2_x = location1[0] + 1
+                index1_y = location1[1] + 1
+                index2_y = location2[1] + 1
+        #elif (location1[0] == 5):
+            #in
         elif(first+second == "xx"):
             index1_x = location1[0]
             index1_y = location1[1]
