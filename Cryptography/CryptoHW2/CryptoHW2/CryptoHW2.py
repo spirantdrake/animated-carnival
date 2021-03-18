@@ -121,13 +121,75 @@ def Enc(KM, PL):
         CT += str(KM[index1_x][index1_y]) + str(KM[index2_x][index2_y])
     return(CT)
 
+
+def Dec(k, CL):
+    KM = key(k.lower())
+    formatted_CL = Pre(CL.lower())
+
+    PT = ""
+    index1_x = 0
+    index1_y = 0
+    index2_x = 0
+    index2_y = 0
+    #print(f"KM = {KM}")
+    #print(f"formatted_CL = {formatted_CL}")
+
+    #loop to iterate through values of formatted_CL
+    for x in range(len(formatted_CL)):
+        #Calls string_split function to separate formatted_CL values into two separate strings
+        first = string_split(formatted_CL, x, 0)
+        second = string_split(formatted_CL, x, 1)
+        #uses the values from the splits and finds their index location in list KM
+        location1 = index(KM, first)
+        location2 = index(KM, second)
+        #through control flow and logical operators, the loop then decrypts the characters following the method of Playfair cipher encryption.
+        if (location1[1] == location2[1]):
+            if (location1[0] == 0):
+                index1_x = 5
+            elif (location2[0] == 0):
+                index1_x = 5
+            else:
+                index1_x = location1[0] - 1
+                index2_x = location2[0] - 1
+            index1_y = location1[1]
+            index2_y = location2[1]
+        elif (location1[0] == location2[0]):
+            index1_y = location1[1]
+            index2_y = location2[1]
+            if (location1[0] == 0 or location2[0] == 0):
+                index1_x = 5
+                index2_x = 5
+            else:
+                index1_x = location1[0] - 1
+                index2_x = location1[0] - 1
+        elif(first+second == "xx"):
+            index1_x = location1[0]
+            index1_y = location1[1]
+            index2_x = location2[0]
+            index2_y = location2[1]
+        else:
+            index1_x = location1[0]
+            index1_y = location2[1]
+            index2_x = location2[0]
+            index2_y = location1[1]
+        PT += str(KM[index1_x][index1_y]) + str(KM[index2_x][index2_y])
+    return(PT)
+
         
 def __main__():
-    k = input("Enter the key for your Playfair cipher: \n")
-    KM =key(k.lower())
-    P = input("Enter your plaintext you wish to encode: \n")
-    PL = Pre(P.lower())
-    Encrypted_CT = Enc(KM, PL)
-    CT = input("Enter the Ciphertext that you would like to decrypt. \n")
+    print("Welcome to Playfair cipher encrypter and decrypter.")
+    decision = input("Would you like to encrypt or decrypt your data? \n")
+    if (decision.lower() == "encrypt"):
+        k = input("Enter the key for your Playfair cipher: \n")
+        KM =key(k.lower())
+        P = input("Enter your plaintext you wish to encode: \n")
+        PL = Pre(P.lower())
+        CT = Enc(KM, PL)
+        print(f"Your plaintext is now encrypted to {CT}.")
+    elif (decision.lower() == "decrypt"):
+        CL = input("Enter the Ciphertext that you would like to decrypt. \n")
+        k = input("Enter the key for your Playfair cipher: \n")
+        PT = Dec(k, CL)
+        print(f"Your ciphertext when unencrpyted is {PT}.")
 
 __main__()
