@@ -61,6 +61,7 @@ def index(KM, value):
 
     return (index_x, index_y)
 
+
 #Takes in PL and splits the two characters into separate ones and returns it
 def string_split(PL, value, placement):
     word = PL[value]
@@ -68,20 +69,26 @@ def string_split(PL, value, placement):
     return (a)
 
 
+#This function takes in a 2d list KM and a 1d list PL and then encrypts the PL using the KM list then returning the CT
 def Enc(KM, PL):
+    #variables for workflow
     CT = ""
     index1_x = 0
     index1_y = 0
     index2_x = 0
     index2_y = 0
-    print(f"KM = {KM}")
-    print(f"PL = {PL}")
+    #print(f"KM = {KM}")
+    #print(f"PL = {PL}")
 
+    #loop to iterate through values of PL
     for x in range(len(PL)):
+        #Calls string_split function to separate PL values into two separate strings
         first = string_split(PL, x, 0)
         second = string_split(PL, x, 1)
+        #uses the values from the splits and finds their index location in list KM
         location1 = index(KM, first)
         location2 = index(KM, second)
+        #through control flow and logical operators, the loop then encrypts the characters following the method of Playfair cipher encryption.
         if (location1[1] == location2[1]):
             if (location1[0] == 5):
                 index1_x = 0
@@ -101,9 +108,18 @@ def Enc(KM, PL):
             else:
                 index1_x = location1[0] + 1
                 index2_x = location1[0] + 1
-
+        elif(first+second == "xx"):
+            index1_x = location1[0]
+            index1_y = location1[1]
+            index2_x = location2[0]
+            index2_y = location2[1]
+        else:
+            index1_x = location1[0]
+            index1_y = location2[1]
+            index2_x = location2[0]
+            index2_y = location1[1]
         CT += str(KM[index1_x][index1_y]) + str(KM[index2_x][index2_y])
-    print(CT)
+    return(CT)
 
         
 def __main__():
@@ -111,6 +127,7 @@ def __main__():
     KM =key(k.lower())
     P = input("Enter your plaintext you wish to encode: \n")
     PL = Pre(P.lower())
-    Enc(KM, PL)
+    Encrypted_CT = Enc(KM, PL)
+    CT = input("Enter the Ciphertext that you would like to decrypt. \n")
 
 __main__()
