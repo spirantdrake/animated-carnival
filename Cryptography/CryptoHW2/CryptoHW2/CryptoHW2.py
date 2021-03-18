@@ -149,7 +149,12 @@ def Dec(k, CL):
         location1 = index(KM, first)
         location2 = index(KM, second)
         #through control flow and logical operators, the loop then decrypts the characters following the method of Playfair cipher encryption.
-        if (location1[0] == location2[0]):
+        if(first+second == "xx"):
+            index1_x = location1[0]
+            index1_y = location1[1]
+            index2_x = location2[0]
+            index2_y = location2[1]
+        elif (location1[0] == location2[0]):
             if (location1[1] == 0):
                 index1_y = 4
                 index2_y = location2[1] - 1
@@ -174,11 +179,6 @@ def Dec(k, CL):
             else:
                 index1_x = location1[0] - 1
                 index2_x = location2[0] - 1
-        elif(first+second == "xx"):
-            index1_x = location1[0]
-            index1_y = location1[1]
-            index2_x = location2[0]
-            index2_y = location2[1]
         else:
             index1_x = location1[0]
             index1_y = location2[1]
