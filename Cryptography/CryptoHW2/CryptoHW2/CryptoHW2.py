@@ -23,26 +23,28 @@ def Pre(P):
     PL = []
     y = 0 
     z = 1
-    word_length = int(math.ceil(len(P)/2))
+    P_2 = P.replace(" ", "") #This takes in the plaintext and removes spaces to encode sentences.
+    #print(P_2)
+    word_length = int(math.ceil(len(P_2)/2))
     repitition = False
 
     # loops through the given plaintext and places the letters into a list 2 at a time
     for x in range(word_length):
-        if(z < len(P)):
-            if(P[y] == P[z]): #checks to see if two side by side letters are the same and inserts an x if they are
-                PL.append(P[y]+"x")
+        if(z < len(P_2)):
+            if(P_2[y] == P_2[z]): #checks to see if two side by side letters are the same and inserts an x if they are
+                PL.append(P_2[y]+"x")
                 y -= 1
                 z -= 1
                 repitition = True
             else: #adds both characters into the list
-                PL.append(P[y]+P[z])
+                PL.append(P_2[y]+P_2[z])
         else: #if the list is an odd number it adds an x as the last character to make it even
-            PL.append(P[y]+"x")
+            PL.append(P_2[y]+"x")
         y += 2
         z += 2
     #edge case rule for catching even numbered plaintext that contain repititive letters
-    if (len(P)%2 == 0 and repitition == True):
-        PL.append(P[y] + "x")
+    if (len(P_2)%2 == 0 and repitition == True):
+        PL.append(P_2[y] + "x")
     #print(PL)
     return(PL)
 
